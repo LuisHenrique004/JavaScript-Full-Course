@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-PROJECT</title>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        .subscribe-button {
+            border: none;
+            background-color: black;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-family: Arial;
+            cursor: pointer;
+            margin-bottom: 35px;
+        }
+
+        .is-subscribed {
+            background-color: rgb(240, 240, 240);
+            color: black;
+        }
+
+        .cost-input {
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .calculate-button {
+            border: none;
+            background-color: green;
+            color: white;
+            font-size: 15px;
+            padding: 12px 15px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="subscribed()"  class = "js-subscribe-button subscribe-button">Subscribe</button>
+    
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <input type="text" class="js-text cost-input" placeholder="Cost of order" onkeydown="handleCostKeyDown(event)">
+    <button onclick="calculate()" class="js-button-calculate calculate-button">Calculate</button>
+    <p class="js-total-cost"></p>
+
+    <p>Rock Paper Scissors</p>
+    <a href="09-rock-paper-scissor.html" target="_blank">Click here</a>
+
+    <script>
+        window.document
+
+        function handleCostKeyDown(event) {
+            if(event.key === 'Enter') {
+                calculate();
+            } 
+        }
+
+        const elementButton = document.querySelector('.js-subscribe-button');
+
+        function subscribed() {
+            if (elementButton.innerText === 'Subscribe') {
+                elementButton.innerHTML = 'Subscribed';
+                elementButton.classList.add('is-subscribed');
+            } else {
+                elementButton.innerHTML = 'Subscribe'
+                elementButton.classList.remove('is-subscribed')
+            }
+        }
+
+        function calculate() {
+            const inputElement = document.querySelector('.js-text');
+           
+            let cost = Number(inputElement.value);
+
+            if (cost < 40) {
+                cost += 10
+            } else {
+                cost
+            }
+
+            document.querySelector('.js-total-cost')
+                .innerHTML = `$${cost}`;
+        }
+    </script>
+</body>
+</html>
